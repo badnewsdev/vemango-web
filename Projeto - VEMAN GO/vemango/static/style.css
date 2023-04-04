@@ -1,0 +1,278 @@
+.menu{
+
+  height: 220px;
+  overflow-y: scroll;
+}
+
+body{
+  background: url("./foto_veman/background.png") no-repeat fixed center;
+  background-size: 100% 100%;
+}
+.container {
+  background-color: #ffffff00;
+  opacity: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+}
+
+.col-md-5 {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767px) {
+  .col-md-5 {
+    max-width: 100%;
+  }
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  min-width: 250px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.input-group-text {
+  background-color: #fff;
+  border-color: none;
+  color: black;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.input-group-text i {
+  font-size: 1.2rem;
+}
+.form-control {
+  min-width: 200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.p-4{
+    padding: 50px;
+    background:white;
+    border-radius: 1rem;
+}
+
+.mt-4{
+  text-align: center;
+}
+.form-control.is-invalid, .was-validated .form-control:invalid {
+  border-color: #dc3545;
+}
+
+.form-control:focus, .form-control:active {
+  box-shadow: none;
+  border-color: #6c757d;
+}
+
+.btn-primary {
+  background-color: #6B9DD0;
+  border-color: #214B6B;
+  padding: 10px;
+  font-size: 15px;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+}
+
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: #214B6B;
+  border-color: #214B6B;
+}
+
+"width": (
+  property: width,
+  class: w,
+  values: (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  )
+),
+"max-width": (
+  property: max-width,
+  class: mw,
+  values: (100: 100%)
+),
+"viewport-width": (
+  property: width,
+  class: vw,
+  values: (100: 100vw)
+),
+"min-viewport-width": (
+  property: min-width,
+  class: min-vw,
+  values: (100: 100vw)
+),
+"height": (
+  property: height,
+  class: h,
+  values: (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  )
+),
+"max-height": (
+  property: max-height,
+  class: mh,
+  values: (100: 100%)
+),
+"viewport-height": (
+  property: height,
+  class: vh,
+  values: (100: 100vh)
+),
+"min-viewport-height": (
+  property: min-height,
+  class: min-vh,
+  values: (100: 100vh)
+),
+
+"margin": (
+  responsive: true,
+  property: margin,
+  class: m,
+  values: map-merge($spacers, (auto: auto))
+),
+"margin-x": (
+  responsive: true,
+  property: margin-right margin-left,
+  class: mx,
+  values: map-merge($spacers, (auto: auto))
+),
+"margin-y": (
+  responsive: true,
+  property: margin-top margin-bottom,
+  class: my,
+  values: map-merge($spacers, (auto: auto))
+),
+"margin-top": (
+  responsive: true,
+  property: margin-top,
+  class: mt,
+  values: map-merge($spacers, (auto: auto))
+),
+"margin-end": (
+  responsive: true,
+  property: margin-right,
+  class: me,
+  values: map-merge($spacers, (auto: auto))
+),
+"margin-bottom": (
+  responsive: true,
+  property: margin-bottom,
+  class: mb,
+  values: map-merge($spacers, (auto: auto))
+),
+"margin-start": (
+  responsive: true,
+  property: margin-left,
+  class: ms,
+  values: map-merge($spacers, (auto: auto))
+),
+// Negative margin utilities
+"negative-margin": (
+  responsive: true,
+  property: margin,
+  class: m,
+  values: $negative-spacers
+),
+"negative-margin-x": (
+  responsive: true,
+  property: margin-right margin-left,
+  class: mx,
+  values: $negative-spacers
+),
+"negative-margin-y": (
+  responsive: true,
+  property: margin-top margin-bottom,
+  class: my,
+  values: $negative-spacers
+),
+"negative-margin-top": (
+  responsive: true,
+  property: margin-top,
+  class: mt,
+  values: $negative-spacers
+),
+"negative-margin-end": (
+  responsive: true,
+  property: margin-right,
+  class: me,
+  values: $negative-spacers
+),
+"negative-margin-bottom": (
+  responsive: true,
+  property: margin-bottom,
+  class: mb,
+  values: $negative-spacers
+),
+"negative-margin-start": (
+  responsive: true,
+  property: margin-left,
+  class: ms,
+  values: $negative-spacers
+),
+// Padding utilities
+"padding": (
+  responsive: true,
+  property: padding,
+  class: p,
+  values: $spacers
+),
+"padding-x": (
+  responsive: true,
+  property: padding-right padding-left,
+  class: px,
+  values: $spacers
+),
+"padding-y": (
+  responsive: true,
+  property: padding-top padding-bottom,
+  class: py,
+  values: $spacers
+),
+"padding-top": (
+  responsive: true,
+  property: padding-top,
+  class: pt,
+  values: $spacers
+),
+"padding-end": (
+  responsive: true,
+  property: padding-right,
+  class: pe,
+  values: $spacers
+),
+"padding-bottom": (
+  responsive: true,
+  property: padding-bottom,
+  class: pb,
+  values: $spacers
+),
+"padding-start": (
+  responsive: true,
+  property: padding-left,
+  class: ps,
+  values: $spacers
+),
+

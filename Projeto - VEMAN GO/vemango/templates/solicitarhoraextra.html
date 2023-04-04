@@ -1,0 +1,100 @@
+
+
+{% extends 'recursoshumanos.html' %}
+
+{% block solicitarhe %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Solicitar Hora Extra </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row">
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light">
+                    {{ solicitarhe.csrf_token }}
+
+                    <legend class="text-center"><h6>Solicitar Hora Extra </h6></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {% if current_user.is_authenticated %}
+                                {{ solicitarhe.solicitante.label(class="form-control-label") }}
+                            <br>
+
+                                {{ current_user.nome_usuario }}
+
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ solicitarhe.lider.label(class="form-control-label") }}
+                            <br>
+                            {{ liderr }}
+
+                        </div>
+
+                        <div class="form-group">
+                            {{ solicitarhe.datasolicitada.label(class="form-control-label") }}
+                            {% if solicitarhe.datasolicitada.errors %}
+                                {{ solicitarhe.datasolicitada(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in solicitarhe.datasolicitada.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ solicitarhe.datasolicitada(class="form-control", type="date") }}
+                                {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ solicitarhe.quantidade.label(class="form-control-label") }}
+                            {% if solicitarhe.quantidade.errors %}
+                                {{ solicitarhe.quantidade(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in solicitarhe.quantidade.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ solicitarhe.quantidade(class="form-control") }}
+                                {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ solicitarhe.motivo.label(class="form-control-label") }}
+                            {% if solicitarhe.motivo.errors %}
+                                {{ solicitarhe.motivo(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in solicitarhe.motivo.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ solicitarhe.motivo(class="form-control") }}
+                                {% endif %}
+                        </div>
+
+
+
+                    </fieldset>
+                        {{ solicitarhe.botao_submit_solicitarHE(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+
+
+
+
+{% endblock %}

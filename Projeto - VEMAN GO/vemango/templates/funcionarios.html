@@ -1,0 +1,119 @@
+
+
+{% extends 'recursoshumanos.html' %}
+
+{% block funcionario %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Administração de Funcionários </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row">
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light">
+                    {{ cadastro_funcionario.csrf_token }}
+
+                    <legend class="text-center"><h6>Cadastrar </h6></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ cadastro_funcionario.nome_funcionario.label(class="form-control-label") }}
+                            {% if cadastro_funcionario.nome_funcionario.errors %}
+                                {{ cadastro_funcionario.nome_funcionario(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in cadastro_funcionario.nome_funcionario.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ cadastro_funcionario.nome_funcionario(class="form-control") }}
+                                {% endif %}
+
+
+                        </div>
+                        <div class="form-group  mb-3">
+                            {{ cadastro_funcionario.id_funcionario.label(class="form-control-label") }}
+                            {% if cadastro_funcionario.id_funcionario.errors %}
+                                {{ cadastro_funcionario.id_funcionario(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in cadastro_funcionario.id_funcionario.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ cadastro_funcionario.id_funcionario(class="form-control") }}
+                                {% endif %}
+                        </div>
+                        <div class="form-group  mb-3">
+                            {{ cadastro_funcionario.cargo.label(class="form-control-label") }}
+                            {% if cadastro_funcionario.cargo.errors %}
+                                {{ cadastro_funcionario.cargo(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in cadastro_funcionario.cargo.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ cadastro_funcionario.cargo(class="form-control") }}
+                                {% endif %}
+                        </div>
+                        <div class="form-group  mb-3">
+                            {{ cadastro_funcionario.lider.label(class="form-control-label") }}
+
+                                {{ cadastro_funcionario.lider(class="form-control") }}
+
+                        </div>
+                    </fieldset>
+                        {{ cadastro_funcionario.botao_submit_funcionario(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="menu container-expand-lg " >
+        <table class="table table-sm caption-top  table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+            <caption>Lista de Funcionários</caption>
+            <div class="row">
+                <div class="col">
+                  <thead class="table-dark">
+                    <tr class="header">
+                      <th scope="col">Ações</th>
+                      <th scope="col">ID do Funcionário</th>
+                      <th scope="col">Nome do Funcionário</th>
+                      <th scope="col">Líder do Funcionário</th>
+                      <th scope="col">Cargo do Funcionário</th>
+                      <th scope="col">Salário do Funcionário</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for funcionario in lista_funcionarios %}
+                    <tr>
+                        <td><a class="btn btn-success" href="{{ url_for('editarfuncionario', funcionario_id=funcionario.id) }}" target="_blank"onclick="window.open(this.href, this.target, 'width=754,height=479'); return false;" >Editar</a> / <a class="btn btn-danger" href=""  data-bs-toggle="modal" data-bs-target=""> Excluir</a></td>
+                        <td>{{funcionario.id_funcionario}}</td>
+                        <td>{{funcionario.nome_funcionario}}</td>
+                        <td>{{funcionario.lider}}</td>
+                        <td>{{funcionario.cargo}}</td>
+                        </div>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </div>
+            </div>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock %}

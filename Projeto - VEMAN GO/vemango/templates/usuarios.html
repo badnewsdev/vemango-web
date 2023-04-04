@@ -1,0 +1,113 @@
+
+
+{% extends 'administrador.html' %}
+
+{% block usuarios %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Administração de Usuários </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row">
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light">
+                    {{ cadastro_usuario.csrf_token }}
+
+                    <legend class="text-center"><h6>Cadastrar </h6></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ cadastro_usuario.nome_usuario.label(class="form-control-label") }}
+                            {% if cadastro_usuario.nome_usuario.errors %}
+                                {{ cadastro_usuario.nome_usuario(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in cadastro_usuario.nome_usuario.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ cadastro_usuario.nome_usuario(class="form-control") }}
+                                {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ cadastro_usuario.login.label(class="form-control-label") }}
+                            {% if cadastro_usuario.login.errors %}
+                                {{ cadastro_usuario.login(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in cadastro_usuario.login.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ cadastro_usuario.login(class="form-control") }}
+                                {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ cadastro_usuario.senha.label(class="form-control-label") }}
+                            {% if cadastro_usuario.senha.errors %}
+                                {{ cadastro_usuario.senha(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in cadastro_usuario.senha.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ cadastro_usuario.senha(class="form-control") }}
+                                {% endif %}
+                        </div>
+
+
+
+                    </fieldset>
+                        {{ cadastro_usuario.botao_submit_usuario(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="menu container-expand-lg " >
+        <table class="table table-sm caption-top  table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+            <caption>Lista de Usuários</caption>
+            <div class="row">
+                <div class="col">
+                  <thead class="table-dark">
+                    <tr class="header">
+                      <th scope="col">Ações</th>
+                      <th scope="col">Nome do Funcionário</th>
+                      <th scope="col">Usuário</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for usuario in lista_usuarios %}
+                    <tr>
+                        <td><a class="btn btn-success" href="" target="_blank"onclick="window.open(this.href, this.target, 'width=754,height=479'); return false;" >Editar</a> / <a class="btn btn-danger" href=""  data-bs-toggle="modal" data-bs-target=""> Excluir</a></td>
+
+                        <td>{{usuario.nome_usuario}}</td>
+                        <td>{{usuario.login}}</td>
+                        </div>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </div>
+            </div>
+        </table>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

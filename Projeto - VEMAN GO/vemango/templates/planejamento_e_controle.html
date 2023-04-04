@@ -1,0 +1,79 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+<nav class="d-flex container-fluid navbar-expand-lg p-2 text-white   " style="width: 100%; background-color: #214B6B; position: fixed; top: 0;>
+        <div class=" nav-item justify-content" >
+            <button class="btn btn-secondary  dropdown-toggle "  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Cadastrar
+            </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Cargos</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('cadastrarpessoas') }}">Pessoas</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('cadastrarfuncionario') }}">Funcionários</a></li>
+          </ul>
+        </div>
+        <h1></h1>
+        <div class="nav-item justify-content ps-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Compras
+            </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <h6 class="text-center">Orçamento</h6>
+            <hr>
+            <li><a class="dropdown-item" href="{{ url_for('solicitar_orcamento') }}">Solicitar - Orçamento</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('validarhoraextra') }}">Enviar - Orçamento</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('retornar_solicitacao_orcamento') }}">Retornar - Solicitação de Orçamento</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('consultar_solicitacao_orcamento') }}">Consultar - Solicitação de Orçamento</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('registrar_hora_extra') }}">Consultar - Orçamento</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aprovar_orcamento_departamento') }}">Aprovar - Orçamento - Departamento</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('aprovar_orcamento_contrato') }}">Aprovar - Orçamento - Contrato</a></li>
+
+            <hr>
+            <h6 class="text-center">Requisição</h6>
+            <hr>
+            <li><a class="dropdown-item" href="{{ url_for('consusolicihe') }}">Solicitações - Hora Extra</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('painelhoraextra') }}" target="_blank"onclick="window.open(this.href, this.target)"; >Painel - Hora Extra</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('consulregistrohe') }}">Registros - Hora Extra</a></li>
+          </ul>
+        </div>
+        <h1></h1>
+        <div class="nav-item justify-content ps-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Verificar
+            </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Cargo</a></li>
+            <li><a class="dropdown-item" href="#">Pessoa</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <h1></h1>
+        <div class="nav-item justify-content ps-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Avaliar
+            </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Cargo</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+</nav>
+
+{% block solicitar_orcamento %}
+{% endblock %}
+{% block consultar_solicitacao_orcamento %}
+{% endblock %}
+{% block retornar_solicitacao_orcamento %}
+{% endblock %}
+{% block enviar_orcamento %}
+{% endblock %}
+{% block aprovar_orcamento_departamento %}
+{% endblock %}
+{% block verificar_orcamento %}
+{% endblock %}
+{% block aprovar_orcamento_contrato %}
+{% endblock %}
+{% endblock %}

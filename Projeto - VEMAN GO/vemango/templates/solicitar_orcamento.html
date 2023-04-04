@@ -1,0 +1,149 @@
+
+
+{% extends 'planejamento_e_controle.html' %}
+
+{% block solicitar_orcamento %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Solicitar Orçamento </h5>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row">
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light">
+                    {{ solicitar_orcamento.csrf_token }}
+
+                    <legend class="text-center"><h6>Solicitar Orçamento </h6></legend>
+                    <fieldset>
+                        <div class="form-group"><h6>
+                            {% if current_user.is_authenticated %}
+                                {{ solicitar_orcamento.solicitante.label(class="form-control-label") }}
+                            <br></h6>
+
+                                {{ current_user.nome_usuario }}
+
+                            {% endif %}
+                        </div>
+                        <br>
+                        <div class="form-group"><h6>
+                            {{ solicitar_orcamento.area.label(class="form-control-label") }}
+                            <br></h6>
+                            {{ departamento }}
+
+                        </div>
+                        <br>
+                        <div class="form-group"><h6>
+                            {{ solicitar_orcamento.datasolicitacao.label(class="form-control-label") }}
+                            <br></h6>
+                            {{ data_atual_formatada }}
+
+                        </div>
+                        <br>
+                        <h6>
+                        <div class="form-group">
+                            {{ solicitar_orcamento.tipo_aquisicao.label(class="form-control-label") }}
+                            {% if solicitar_orcamento.tipo_aquisicao.errors %}
+                                {{ solicitar_orcamento.tipo_aquisicao(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in solicitar_orcamento.tipo_aquisicao.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ solicitar_orcamento.tipo_aquisicao(class="form-control") }}
+                                {% endif %}
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            {{ solicitar_orcamento.tipo_solicitacao.label(class="form-control-label") }}
+                            {% if solicitar_orcamento.tipo_solicitacao.errors %}
+                                {{ solicitar_orcamento.tipo_solicitacao(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in solicitar_orcamento.tipo_solicitacao.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ solicitar_orcamento.tipo_solicitacao(class="form-control") }}
+                                {% endif %}
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            {{ solicitar_orcamento.motivo.label(class="form-control-label") }}
+                            {% if solicitar_orcamento.motivo.errors %}
+                                {{ solicitar_orcamento.motivo(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in solicitar_orcamento.motivo.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ solicitar_orcamento.motivo(class="form-control") }}
+                                {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ solicitar_orcamento.planilha.label(class="form-control-label") }}
+                            {% if solicitar_orcamento.planilha.errors %}
+                                {{ solicitar_orcamento.planilha(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in solicitar_orcamento.planilha.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ solicitar_orcamento.planilha(class="form-control") }}
+                                {% endif %}
+                        </div>
+
+
+
+                    </fieldset>
+                        {{ solicitar_orcamento.botao_submit_solicitarOrcamento(class="btn btn-primary mt-2") }}
+                        <di>
+                            <a id="ValidarOrcamento" data-bs-toggle="modal" data-bs-target="#ValidarOrcamento"</a>
+                        </di>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+<!-- Modal -->
+<div class="modal fade" id="ValidarOrcamento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aprovar Orçamento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Você quer realmente enviar está solicitação?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+        {% for orcamento in orcamentos %}
+          <form method="POST" action="{{ url_for('solicitar_orcamento') }}">
+            <button type="submit" class="btn btn-success">Sim</button>
+          </form>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

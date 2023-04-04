@@ -1,0 +1,85 @@
+
+
+{% extends 'planejamento_e_controle.html' %}
+
+{% block retornar_solicitacao_orcamento %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Solicitações De Orçamentos Abertas  </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row" >
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light" enctype="multipart/form-data">
+                    {{ retornar_solicitacao_orcamento.csrf_token }}
+
+                    <legend class="text-center"><h6>Informações </h6></legend>
+                    <fieldset>
+                        <div class="form-group">
+                        Quantidade de Solicitações Abertas : {{ contagem }}
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-expand-lg " >
+            <table class="table table-sm caption-top  table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+                <caption>Lista de Solicitações</caption>
+                <div class="row" >
+                    <div class="col">
+                      <thead class="table-dark">
+                        <tr class="header">
+                          <th scope="col">Ações</th>
+                          <th scope="col">ID Solicitação</th>
+                          <th scope="col">Data/Hora Solicitação</th>
+                          <th scope="col">Solicitante</th>
+                          <th scope="col">Área Solicitante</th>
+                          <th scope="col">Tipo de Aquisição</th>
+                          <th scope="col">Tipo de Solicitação</th>
+                          <th scope="col">Motivo</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for retorno in retornar_solicitacao_orcamento %}
+                        <tr>
+                            <td><a class="btn btn-success btn-sm" href="{{ url_for('enviar_orcamento', solicitacao_id=retorno.id) }}" >Enviar Orçamento</a>
+                                <a class="btn btn-warning btn-sm" href=""  data-bs-toggle="modal" data-bs-target=""> Reprovar Solicitação</a>
+                                <a class="btn btn-info btn-sm" href="{{ url_for('visualizar_solicitacao_orcamento', solicitacao_id=retorno.id) }}" target="_blank"  data-bs-toggle="modal" data-bs-target=""> Visualizar</a></td>
+                            <td>{{ retorno.id }}</td>
+                            <td>{{ retorno.datasolicitacao }}</td>
+                            <td>{{ retorno.solicitante }}</td>
+                            <td>{{ retorno.area }}</td>
+                            <td>{{ retorno.tipo_aquisicao }}</td>
+                            <td>{{ retorno.tipo_solicitacao }}</td>
+                            <td>{{ retorno.motivo }}</td>
+                            <td>{{ retorno.status }}</td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </div>
+                </div>
+            </table>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+{% endblock %}

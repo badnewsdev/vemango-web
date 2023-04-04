@@ -1,0 +1,19 @@
+Aprovado = 1 -1 - ok
+
+Reprovada = tudo do registro é desvio - ok
+
+Aguardando retorno = tudo do registro é desvio - ok
+
+registro sem solicitação = tudo do registro é desvio - ok
+
+
+
+reprovada e teve uma nova solicitação = ter que tirar a anterior e passar só a nova
+se a quantidade de horas que ele fez for menor do que ele solicitou, o desvio precisa ser 0 - ok
+o que fazer quando tem duas solicitações aprovadas para o mesmo dia?
+onde não teve solicitação, não tem lider, mas tem desvio e preciso computar no lider correto.
+colocar uma condição nas horas liberadas para buscar só o que foi aprovado.
+colocar uma condição onde não pode ter mais de um registro de hora por colaborador. (Importante)
+colocar a possibilidade de aditar uma solicitação de hora por parte do gestor.
+
+começar os gráficos.

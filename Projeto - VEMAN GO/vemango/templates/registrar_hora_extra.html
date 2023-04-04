@@ -1,0 +1,90 @@
+
+
+{% extends 'recursoshumanos.html' %}
+
+{% block registrar_hora_extra %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Registro De Hora Extra </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row" >
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light" enctype="multipart/form-data">
+                    {{ registro.csrf_token }}
+
+                    <legend class="text-center"><h6>Importação Dos Dados </h6></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ registro.arquivo.label(class="form-control-label") }}
+                            {{ registro.arquivo(class="form-control") }}
+
+                          <br>
+
+
+                            <input class="container " type="submit" name="enviar" value="Enviar" formnovalidate="formnovalidate">
+
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-expand-lg " >
+            <table class="table table-sm caption-top  table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+                <caption>Lista de Pessoas</caption>
+                <div class="row" >
+                    <div class="col">
+                      <thead class="table-dark">
+                        <tr class="header">
+
+                          <th scope="col">ID</th>
+                          <th scope="col">Colaborador</th>
+                          <th scope="col">Data</th>
+                          <th scope="col">Entrada (Escala)</th>
+                          <th scope="col">Saída (Escala)</th>
+                          <th scope="col">Entrada (Ponto)</th>
+                          <th scope="col">Saída (Ponto)</th>
+                          <th scope="col">Quantidade Hora Extra</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in veman_df.index %}
+                        <tr>
+
+                            <td>{{veman_df['ID'][i]}}</td>
+                            <td>{{veman_df['Colaborador'][i]}}</td>
+                            <td>{{veman_df['Data'][i]}}</td>
+                            <td>{{veman_df['Entrada (Escala)'][i]}}</td>
+                            <td>{{veman_df['Saída (Escala)'][i]}}</td>
+                            <td>{{veman_df['Entrada (Ponto)'][i]}}</td>
+                            <td>{{veman_df['Saída (Ponto)'][i]}}</td>
+                            <td>{{veman_df['Total de HE'][i]}}</td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </div>
+                </div>
+            </table>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+{% endblock %}

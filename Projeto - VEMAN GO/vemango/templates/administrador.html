@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+<nav class="d-flex container-fluid navbar-expand-lg p-2 text-white bg-dark  " style="width: 100%;">
+        <div class=" nav-item justify-content" >
+            <button class="btn btn-secondary  dropdown-toggle "  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Cadastrar
+            </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ url_for('usuarios') }}">Usuários</a></li>
+          </ul>
+        </div>
+        <h1></h1>
+        <div class="nav-item justify-content ps-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Hora Extra
+            </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Solicitar Hora Extra</a></li>
+            <li><a class="dropdown-item" href="#">Validar - Hora Extra</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('registrar_hora_extra') }}">Registrar - Hora Extra</a></li>
+            <li><a class="dropdown-item" href="#">Consultar Registros</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('painelhoraextra') }}">Painel - Hora Extra</a></li>
+          </ul>
+        </div>
+        <h1></h1>
+        <div class="nav-item justify-content ps-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Verificar
+            </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Cargo</a></li>
+            <li><a class="dropdown-item" href="#">Pessoa</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <h1></h1>
+        <div class="nav-item justify-content ps-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Avaliar
+            </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Cargo</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+</nav>
+
+
+
+{% block usuarios %}
+{% endblock %}
+
+{% endblock %}

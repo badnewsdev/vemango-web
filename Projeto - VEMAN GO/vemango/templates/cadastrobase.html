@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container" style=""></div>
+<nav class="d-flex flex-column vh-100 flex-shrink-0 p-1 bg-dark" style="width: 145px;">
+  <div class="dropdown container-fluid" style="padding-top: 55px;">
+    <button class="btn btn-outline-success border border-dark dropdown-toggle mt-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #EF6C28;">
+      Cadastrar
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Contratos</a></li>
+      <li><a class="dropdown-item" href="#">Centro de Custo</a></li>
+      <li><a class="dropdown-item" href="#">Centro de Serviço</a></li>
+      <li><a class="dropdown-item" href="#">Conta Contábil</a></li>
+      <li><a class="dropdown-item" href="#">Forncedor</a></li>
+    </ul>
+  </div>
+  <h1></h1>
+  <div class="dropdown container-fluid">
+    <button class="btn btn-outline-success border border-dark dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #EF6C28;">
+      Cadastrar
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+      <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Cargo</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+  <h1></h1>
+  <div class="dropdown container-fluid">
+    <button class="btn btn-outline-success border border-dark dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #EF6C28;">
+      Cadastrar
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+      <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Cargo</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+  <h1></h1>
+  <div class="dropdown container-fluid">
+    <button class="btn btn-outline-success border border-dark dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #EF6C28;">
+      Cadastrar
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+      <li><a class="dropdown-item" href="{{ url_for('cargos') }}">Cargo</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+{% endblock %}

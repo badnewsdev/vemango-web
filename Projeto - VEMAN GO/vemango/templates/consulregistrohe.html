@@ -1,0 +1,86 @@
+
+
+{% extends 'recursoshumanos.html' %}
+
+{% block consulregistrohe %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Consultar Registro De Hora Extra </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row" >
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light" enctype="multipart/form-data">
+                    {{ registros.csrf_token }}
+
+                    <legend class="text-center"><h6>Pesquisar Registros </h6></legend>
+                    <fieldset>
+                        <div class="form-group">
+
+
+
+
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-expand-lg " >
+            <table class="table table-sm caption-top  table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+                <caption>Lista de Registros</caption>
+                <div class="row" >
+                    <div class="col">
+                      <thead class="table-dark">
+                        <tr class="header">
+
+                          <th scope="col">ID</th>
+                          <th scope="col">Colaborador</th>
+                          <th scope="col">Data</th>
+                          <th scope="col">Entrada (Escala)</th>
+                          <th scope="col">Saída (Escala)</th>
+                          <th scope="col">Entrada (Ponto)</th>
+                          <th scope="col">Saída (Ponto)</th>
+                          <th scope="col">Quantidade Hora Extra</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for registro in registros %}
+                        <tr>
+
+                            <td>{{ registro.id_colaborador }}</td>
+                            <td>{{ registro.nome_colaborador }}</td>
+                            <td>{{ registro.data_ponto }}</td>
+                            <td>{{ registro.entrada_escala }}</td>
+                            <td>{{ registro.saida_escala }}</td>
+                            <td>{{ registro.entrada_ponto }}</td>
+                            <td>{{ registro.saida_ponto }}</td>
+                            <td>{{ registro.qtde_horas }}</td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </div>
+                </div>
+            </table>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+{% endblock %}

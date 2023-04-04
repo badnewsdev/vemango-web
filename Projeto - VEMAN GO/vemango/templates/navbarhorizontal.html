@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="sidebar showMenu">
+    <div class="logo-details">
+  <img src="{{ url_for('static', filename='foto_veman/Veman.png') }}" alt="Logo da VEMAN GO" style="max-width: 100%; padding-bottom: 10px;">
+</div>
+    <ul class="nav-links">
+      <li>
+        <a href="{{ url_for('home') }}">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="link_name">Início</span>
+        </a>
+        
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Departamentos</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Departamentos</a></li>
+          <li><a href="{{ url_for('recursoshumanos') }}">Recursos Humanos</a></li>
+          <li><a href="{{ url_for('administrador') }}">Administrador</a></li>
+          <li><a href="{{ url_for('planejamento_e_controle') }}">Planejamento e Controle</a></li>
+          <li><a href="#">Frota</a></li>
+
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="link_name">Cadastros</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Cadastros</a></li>
+          <li><a href="#">Contratos</a></li>
+          <li><a href="#">Centro de Custo</a></li>
+          <li><a href="#">Conta Contábil</a></li>
+          <li><a href="#">Fornecedor</a></li>
+          <li><a href="{{ url_for('cargos') }}">Cargos</a></li>
+
+
+        </ul>
+      </li>
+      <li>
+        
+        <a href="{{ url_for('sair') }}">
+          <i class='bx bx-log-out' ></i>
+          <span class="link_name">Sair</span>
+        </a>
+      </li>
+      
+</ul>
+  </div>
+
+  <script>
+  let arrow = document.querySelectorAll(".arrow");
+  for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener("click", (e)=>{
+   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+   arrowParent.classList.toggle("showMenu");
+    });
+  }
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".bx-menu");
+  console.log(sidebarBtn);
+  sidebarBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("close");
+  });
+  </script>
+</body>
+</html>

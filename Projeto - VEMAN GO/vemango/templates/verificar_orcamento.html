@@ -1,0 +1,167 @@
+
+{% extends 'planejamento_e_controle.html' %}
+
+{% block verificar_orcamento %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Solicitação </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row" >
+            <div class="col-4">
+                <form method="POST" action="" class=" p-3 mt-1" enctype="multipart/form-data">
+                    {{ solicitacao.csrf_token }}
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-expand-lg " >
+            <table class="table table-sm caption-top table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+                <caption></caption>
+                <div class="row" >
+                    <div class="col">
+                      <thead class="table-dark">
+                        <tr class="header">
+
+                          <th scope="col">ID Solicitação</th>
+                          <th scope="col">Data/Hora Solicitação</th>
+                          <th scope="col">Solicitante</th>
+                          <th scope="col">Área Solicitante</th>
+                          <th scope="col">Tipo de Aquisição</th>
+                          <th scope="col">Tipo de Solicitação</th>
+                          <th scope="col">Motivo</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+
+                            <td>{{ solicitacao.id }}</td>
+                            <td>{{ solicitacao.datasolicitacao }}</td>
+                            <td>{{ solicitacao.solicitante }}</td>
+                            <td>{{ solicitacao.area }}</td>
+                            <td>{{ solicitacao.tipo_aquisicao }}</td>
+                            <td>{{ solicitacao.tipo_solicitacao }}</td>
+                            <td>{{ solicitacao.motivo }}</td>
+                            <td>{{ solicitacao.status }}</td>
+                        </tr>
+
+                      </tbody>
+                    </div>
+                </div>
+            </table>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="container-expand">
+    <div class="g-2 p-1 mt-1  text-center">
+        <h5>Orçamento</h5>
+    <div/>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <div class="container-expand-lg" >
+                <table class="table table-sm caption-top table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+                    <div class="row" >
+                        <div class="col">
+                            <thead class="table-dark">
+                            <tr class="header">
+                              <th scope="col">Ações</th>
+                              <th scope="col">ID Orçamento</th>
+                              <th scope="col">Data do Orçamento</th>
+                              <th scope="col">Número da Solicitação</th>
+                              <th scope="col">Número do Orçamento</th>
+                              <th scope="col">Fornecedor</th>
+                              <th scope="col">Valor do Orçamento</th>
+                              <th scope="col">Método de Pagamento</th>
+                              <th scope="col">Anexo</th>
+                              <th scope="col">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for orcamento in orcamentos %}
+                                <tr>
+                                    <td><a class="btn btn-success btn-sm" href="{{ url_for('validar_orcamento', orcamento_id=orcamento.id) }}" data-bs-toggle="modal" data-bs-target="#ValidarOrcamento">Validar Orçamento</a>
+                                        <a class="btn btn-info btn-sm" href="{{ url_for('visualizar_orcamento', orcamento_id=orcamento.id) }}" target="_blank" data-bs-toggle="modal" data-bs-target=""> Visualizar</a></td>
+
+                                    <td>{{ orcamento.id }}</td>
+                                    <td>{{ orcamento.data_orcamento }}</td>
+                                    <td>{{ orcamento.numero_solicitacao }}</td>
+                                    <td>{{ orcamento.numero_orcamento }}</td>
+                                    <td>{{ orcamento.fornecedor }}</td>
+                                    <td>{{ orcamento.valor_orcamento }}</td>
+                                    <td>{{ orcamento.metodo_pagamento }}</td>
+
+                                    <td>{{ orcamento.anexo_orcamento }}</td>
+                                    <td>{{ orcamento.status }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </div>
+                    </div>
+                </table>
+            </div>
+        <div class="col">
+            <div class="container-expand-lg" >
+                <div class="row" >
+                    <div class="col">
+                        <form method="POST" action="" class=" p-1 mt-1">
+                            {{ solicitacao.csrf_token }}
+                            <fieldset>
+                                <div class="form-group">
+                                    {{ cadastrar_orcamento.botao_submit_outroOrcamento(class="btn btn-primary mt-2") }}
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ValidarOrcamento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Aprovar Orçamento</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Você quer realmente APROVAR este orçamento?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+        {% for orcamento in orcamentos %}
+          <form method="POST" action="{{ url_for('validar_orcamento', orcamento_id=orcamento.id) }}">
+        {% endfor %}
+          <button type="submit" class="btn btn-success">Sim</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

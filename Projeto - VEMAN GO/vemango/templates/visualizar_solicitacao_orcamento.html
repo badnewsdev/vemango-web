@@ -1,0 +1,119 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>VEMAN GO</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+
+
+
+    {% block body %}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                 <img src="{{ url_for('static', filename='foto_veman/Veman.png') }} " class="rounded" width="240">
+            </div>
+            <div class="col-3">
+                 {{ current_user.nome_usuario }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col g-2 p-1 mt-1  text-center">
+                 <h5>Solicitação de Orçamentos </h5>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                 <h5>Data da Solicitação:</h5>
+                    {{ solicitacao.datasolicitacao }}
+            </div>
+            <div class="col">
+                 <h5>Número da Solicitação:</h5>
+                    {{ solicitacao.id }}
+            </div>
+            <div class="col">
+                 <h5>Solicitante:</h5>
+                    {{ solicitacao.solicitante }}
+            </div>
+            <div class="col">
+                 <h5>Área Solicitante:</h5>
+                    {{ solicitacao.area }}
+            </div>
+            <div class="col">
+                 <h5>Tipo de Aquisição:</h5>
+                    {{ solicitacao.tipo_aquisicao }}
+            </div>
+        </div>
+        <br><br><br>
+        <div class="row">
+            <div class="col">
+                 <h5>Tipo de Solicitação:</h5>
+                    {{ solicitacao.tipo_solicitacao }}
+            </div>
+            <div class="col">
+                 <h5>Status:</h5>
+                    {{ solicitacao.status }}
+            </div>
+            <div class="col">
+                 <h5>Data Envio do Orçamento:</h5>
+                    {{ solicitacao.datahora_envio_orcamento }}
+            </div>
+            <div class="col">
+                 <h5>Usuário Registrou Orçamento:</h5>
+                    {{ solicitacao.usuario_envio_orcamento }}
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col">
+                 <h5>Motivo:</h5>
+                    {{ solicitacao.motivo }}
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col">
+                 <h5>Produto/Serviço:</h5>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                 <h5>Nome:</h5>
+                    <h6>UNIFORME - P</h6>
+                    <h6>UNIFORME - G</h6>
+            </div>
+            <div class="col-10">
+                 <h5>Quantidade:</h5>
+                    <h6>10</h6>
+                    <h6>20</h6>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

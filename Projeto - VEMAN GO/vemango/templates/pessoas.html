@@ -1,0 +1,79 @@
+
+
+{% extends 'recursoshumanos.html' %}
+
+{% block pessoa %}
+<hr>
+<div class="container-fluid">
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Administração de Pessoas </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row" >
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light">
+                    {{ cadastro_pessoa.csrf_token }}
+
+                    <legend class="text-center"><h6>Cadastrar </h6></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ cadastro_pessoa.nome_pessoa.label(class="form-control-label") }}
+                            {% if cadastro_pessoa.nome_pessoa.errors %}
+                                {{ cadastro_pessoa.nome_pessoa(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in cadastro_pessoa.nome_pessoa.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ cadastro_pessoa.nome_pessoa(class="form-control") }}
+                                {% endif %}
+                        </div>
+                    </fieldset>
+                        {{ cadastro_pessoa.botao_submit_pessoa(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div class="container-expand-lg " >
+        <table class="table table-sm caption-top  table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+            <caption>Lista de Pessoas</caption>
+            <div class="row" >
+                <div class="col">
+                  <thead class="table-dark">
+                    <tr class="header">
+                      <th scope="col">Ações</th>
+                      <th scope="col">Nome da Pessoa</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for pessoa in lista_pessoas %}
+                    <tr>
+                        <td><a class="btn btn-success" href="{{ url_for('editarpessoa', pessoa_id=pessoa.id) }}" target="_blank"onclick="window.open(this.href, this.target, 'width=754,height=479'); return false;" >Editar</a> / <a class="btn btn-danger" href="{{ url_for('excluirpessoa', pessoa_id=pessoa.id) }}"  data-bs-toggle="modal" data-bs-target=""> Excluir</a></td>
+                        <td>{{pessoa.nome_pessoa}}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </div>
+            </div>
+        </table>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

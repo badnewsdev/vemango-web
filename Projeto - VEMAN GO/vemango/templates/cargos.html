@@ -1,0 +1,111 @@
+
+
+{% extends 'recursoshumanos.html' %}
+
+{% block cargo %}
+<hr>
+<div class="container-fluid">
+
+
+    <div class="row" >
+        <div class="col">
+            <div class="g-2 p-1 mt-1  text-center">
+                <h5>Administração de Cargos </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <h1></h1>
+
+    <div class=" ps-2 container-expand-lg mb-1" >
+        <div class="row" >
+            <div class="col-4">
+                <form method="POST" action="" class="border p-3 mt-1  border bg-light">
+                    {{ cadastro_cargo.csrf_token }}
+
+                    <legend class="text-center"><h6>Cadastrar </h6></legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ cadastro_cargo.nome_cargo.label(class="form-control-label") }}
+                            {% if cadastro_cargo.nome_cargo.errors %}
+                                {{ cadastro_cargo.nome_cargo(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                    {% for erro in cadastro_cargo.nome_cargo.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                            </div>
+                                {% else %}
+                                    {{ cadastro_cargo.nome_cargo(class="form-control") }}
+                                {% endif %}
+                        </div>
+                    </fieldset>
+                        {{ cadastro_cargo.botao_submit_cargo(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <form  class="d-flex ps-2 nav-item">
+          <fieldset>
+                <h8>Pesquisar Nome do Cargo</h8>
+                <input class="form-control me-2 mb-1" type="search" placeholder="" aria-label="Search" name="pesquisado">
+                <button class="btn btn-outline-success" name="pesquisar" type="submit">Pesquisar</button>
+
+          </fieldset>
+    </form>
+
+    <hr>
+
+
+    <div class="container-expand-lg" >
+        <table class="table table-sm caption-top  table-hover table-bordered ms-2  mb-2 border p-3 mt-1  border bg-light" >
+            <caption>Lista de Cargos</caption>
+            <div class="row" >
+                <div class="col">
+                  <thead class="table-dark">
+                    <tr class="header">
+                      <th scope="col">Ações</th>
+                      <th scope="col">Nome do Cargo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for cargo in lista_cargos %}
+                    <tr>
+                        <td><a class="btn btn-success" href="{{ url_for('editarcargo', cargo_id=cargo.id) }}" target="_blank"onclick="window.open(this.href, this.target, 'width=754,height=479'); return false;" >Editar</a> / <a class="btn btn-danger" href="{{ url_for('excluircargo', cargo_id=cargo.id) }}"  data-bs-toggle="modal" data-bs-target=""> Excluir</a></td>
+                        <td>{{cargo.nome_cargo}}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </div>
+            </div>
+        </table>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="excluircargo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Excluir Cargo</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Você quer realmente excluir este cargo? (Essa ação não pode ser desfeita)
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <form method="POST" action="">
+                <button type="submit" class="btn btn-danger">Excluir Cargo</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}
